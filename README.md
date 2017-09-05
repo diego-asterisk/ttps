@@ -36,10 +36,10 @@ collaborate (see also: git help workflows)
    push       Actualización de refs remotas junto con objetos asociados
 
 2. Ejecutá el comando git help help. ¿Cuál fue el resultado?
-##NAME
+## NAME
 >       git-help - Display help information about Git
 
-##SYNOPSIS
+## SYNOPSIS
 >       git help [-a|--all] [-g|--guide]
                   [-i|--info|-m|--man|-w|--web] [COMMAND|GUIDE]
 

@@ -50,6 +50,7 @@ git help add
 # Ruby TP1
 1. Investigá y probá en un intérprete de Ruby cómo crear objetos de los siguientes tipos
 básicos usando literales y usando el constructor new (cuando sea posible):
+
     1. Arreglo (Array)
 b = [1,2,3]
 

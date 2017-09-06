@@ -46,3 +46,45 @@ collaborate (see also: git help workflows)
 3. Utilizá el subcomando help para conocer qué opción se puede pasar al subcomando add para que ignore errores al agregar archivos.
 git help add
 >--ignore-errors
+
+# Ruby TP1
+1. Investigá y probá en un intérprete de Ruby cómo crear objetos de los siguientes tipos
+básicos usando literales y usando el constructor new (cuando sea posible):
+1. Arreglo (Array)
+b = [1,2,3]
+ary = Array.new
+arr = Array.new(3)
+arreglo = Array.new(3,true)
+
+2. Diccionario o hash (Hash)
+a = {1=>2,3=>4}
+colors = { "red" => 0xf00, "green" => 0x0f0, "blue" => 0x00f }
+options = { font_size: 10, font_family: "Arial" }
+grades = Hash.new
+grades["Dorothy Doe"] = 9
+grades = Hash.new(-1)
+puts grades["Jane Doe"]
+
+3. String (String)
+a = 'hola'
+b = "hola #{3*11}"
+c = String.new("555")
+
+4. Símbolo (Symbol)
+$f1 = :Fred
+$f2 = :Fred
+a = :"Roca"
+
+2. ¿Qué devuelve la siguiente comparación? ¿Por qué?
+> 'TTPS Ruby'.object_id == 'TTPS Ruby'.object_id
+Devuelve false. Porque cada instancia de un string es un objeto distinto y su object_id es distinto
+
+3. Escribí una función llamada reemplazar que reciba un String y que busque y reemplace en el mismo cualquier ocurrencia de { por do\n y cualquier ocurrencia de } por \nend, demodo que convierta los bloques escritos con llaves por bloques multilínea con do y end.
+Por ejemplo:
+reemplazar("3.times { |i| puts i }")
+> # => "3.times do\n |i| puts i \nend"
+def reemplazar(str)
+   @start = str.gsub "{","\ndo"
+   @end = @start.gsub "}","\nend"
+end
+

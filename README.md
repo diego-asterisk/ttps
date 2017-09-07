@@ -51,43 +51,47 @@ git help add
 1. Investigá y probá en un intérprete de Ruby cómo crear objetos de los siguientes tipos
 básicos usando literales y usando el constructor new (cuando sea posible):
 
+
     1. Arreglo (Array)
-b = [1,2,3]
+    
+    b = [1,2,3]
 
-ary = Array.new
+    ary = Array.new
 
-arr = Array.new(3)
+    arr = Array.new(3)
 
-arreglo = Array.new(3,true)
+    arreglo = Array.new(3,true)
 
     2. Diccionario o hash (Hash)
-a = {1=>2,3=>4}
+    
+    a = {1=>2,3=>4}
 
-colors = { "red" => 0xf00, "green" => 0x0f0, "blue" => 0x00f }
+    colors = { "red" => 0xf00, "green" => 0x0f0, "blue" => 0x00f }
 
-options = { font_size: 10, font_family: "Arial" }
+    options = { font_size: 10, font_family: "Arial" }
 
-grades = Hash.new
+    grades = Hash.new
 
-grades["Dorothy Doe"] = 9
+    grades["Dorothy Doe"] = 9
 
-grades = Hash.new(-1)
+    grades = Hash.new(-1)
 
-puts grades["Jane Doe"]
+    puts grades["Jane Doe"]
 
     3. String (String)
-a = 'hola'
+    
+    a = 'hola'
 
-b = "hola #{3*11}"
+    b = "hola #{3*11}"
 
-c = String.new("555")
+    c = String.new("555")
 
     4. Símbolo (Symbol)
-$f1 = :Fred
+    $f1 = :Fred
 
-$f2 = :Fred
+    $f2 = :Fred
 
-a = :"Roca"
+    a = :"Roca"
 
 2. ¿Qué devuelve la siguiente comparación? ¿Por qué?
 > 'TTPS Ruby'.object_id == 'TTPS Ruby'.object_id
@@ -102,6 +106,7 @@ reemplazar("3.times { |i| puts i }")
 
 > \# => "3.times do\n |i| puts i \nend"
 
+```ruby
 def reemplazar(str)
 
    @start = str.gsub "{","\ndo"
@@ -109,4 +114,34 @@ def reemplazar(str)
    @end = @start.gsub "}","\nend"
 
 end
+```
+
+> otro:
+
+```ruby
+def reemplazar_start(str)
+
+   str.gsub "{","\ndo"
+   
+end
+
+def reemplazar_end(str)
+
+   str.gsub "}","\nend"
+   
+end
+
+def reemplazar(str)
+
+   reemplazar_end(reemplazar_start(str))
+   
+end
+
+def reemplazar(str)
+
+   reemplazar_start(reemplazar_end(str))
+   
+end
+```
+
 

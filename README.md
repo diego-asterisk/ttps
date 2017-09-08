@@ -1,4 +1,4 @@
-# ttps
+# TTPS
 Taller de ruby
 # git
 1. Ejecutá git o git help en la línea de comandos y mirá los subcomandos que tenés disponibles.
@@ -144,4 +144,84 @@ def reemplazar(str)
 end
 ```
 
+4.Escribí una función que convierta a palabras la hora actual, dividiendo en los siguientes rangos los minutos:
+
+   * Si el minuto está entre 0 y 10, debe decir "en punto",
+   * si el minuto está entre 11 y 20, debe decir "y cuarto",
+   * si el minuto está entre 21 y 34, debe decir "y media",
+   * si el minuto está entre 35 y 44, debe decir "menos veinticinco" (de la hora siguiente),
+   * si el minuto está entre 45 y 55, debe decir "menos cuarto" (de la hora siguiente),
+   * y si el minuto está entre 56 y 59, debe decir "casi las" (y la hora siguiente)
+
+   Tomá como ejemplos los siguientes casos:
+
+   ```ruby
+   # A las 10:01
+   en_palabras(Time.now)
+   # => "Son las 10 en punto"
+   # A las 9:33
+   en_palabras(Time.now)
+   # => "Son las 9 y media"
+   # A las 9:45
+   en_palabras(Time.now)
+   # => "Son las 10 menos cuarto"
+   # A las 6:58
+   en_palabras(Time.now)
+   # => "Casi son las 7"
+   ```
+
+   > Tip: resolver utilizando rangos numéricos
+
+```ruby
+def en_palabras(fecha)
+   hora = fecha.hour
+   minutos = fecha.min
+   puts hora.to_s + ':' + minutos.to_s
+   case minutos 
+      when 0..10 then "son las #{hora} en punto"
+      when 11..20 then "son las #{hora} y cuarto"
+      when 21..34 then "son las #{hora} y media"
+      when 35..44 then "son las #{(hora + 1) % 24} menos veinticinco"
+      when 45..55 then "son las #{(hora + 1) % 24} menos cuarto"
+      when 56..59 then "casi las #{(hora + 1) % 24}"
+   end
+end
+
+en_palabras(Time.now)
+en_palabras(Time.new(2008,6,21, 13,30,0, "+09:00"))
+en_palabras(Time.new(2008,6,21, 13,30,0, "+03:00"))
+en_palabras(Time.new(2008,6,21, 23,55,0, "+03:00"))
+en_palabras(Time.new(2008,6,21, 23,56,0, "+03:00"))
+```
+
+5.Escribí una función llamada `contar` que reciba como parámetro dos `string` y que retorne la cantidad de veces que
+   aparece el segundo `string` en el primero, sin importar mayúsculas y minúsculas. Por ejemplo:
+
+   ```ruby
+   contar("La casa de la esquina tiene la puerta roja y la ventana blanca.", "la")
+   # => 5
+   ```
+```ruby
+def words_from_string(string)
+   string.downcase.scan(/[\w']+/)
+end
+
+def contar(frase,palabra)
+   words_from_string(frase).reduce(0) {|count, w| if palabra==w then count + 1 else count + 0 end }
+end
+
+contar("La casa de la esquina tiene la puerta roja y la ventana blanca.", "la")
+```
+
+> devuelve 4
+
+```ruby
+def contar(frase,palabra)
+   frase.downcase.scan(/#{palabra.downcase}/).size
+end
+
+contar("La casa de la esquina tiene la puerta roja y la ventana blanca.", "la")
+```
+
+> devuelve 5
 

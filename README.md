@@ -47,6 +47,36 @@ collaborate (see also: git help workflows)
 git help add
 >--ignore-errors
 
+4. ¿Cuáles son los estados posibles en Git para un archivo? ¿Qué significa cada uno?
+
+> archivos ignorados: no requieren ser versionados
+
+> archivos sin seguimiento: cuando no han sido integrados al repositorio. Pasan al estado 'preparado' con git add
+
+> archivos modificados: están en el repositorio pero se han modificado. Pasan al estado 'preparado' con git add o git commit -a
+
+> archivos preparados (staged): están listos para el próximo commit
+
+> archivos en el repositorio (commited): se encuentran administrados por git y pueden ser recuperados
+
+5. Cloná el repositorio de materiales de la materia: 
+
+https://github.com/TTPS-ruby/capacitacion-ruby-ttps.git. Una vez finalizado, ¿cuál es el hash del último commit que hay en el repositorio que clonaste?
+
+Tip: git log
+
+> git log
+
+> commit e38781bea87234f52d5282c11acf76d3be066ea2
+
+> Author: Christian Rodriguez <chrodriguez@gmail.com>
+
+> Date:   Mon Aug 28 18:43:14 2017 -0300
+
+>    eliminamos MacRuby de las vms
+
+
+
 # Ruby TP1
 1. Investigá y probá en un intérprete de Ruby cómo crear objetos de los siguientes tipos
 básicos usando literales y usando el constructor new (cuando sea posible):
@@ -224,4 +254,30 @@ contar("La casa de la esquina tiene la puerta roja y la ventana blanca.", "la")
 ```
 
 > devuelve 5
+
+6.Modificá la función anterior para que sólo considere como aparición del segundo `string` cuando se trate de palabras    completas. Por ejemplo:
+
+   ```ruby
+   contar_palabras("La casa de la esquina tiene la puerta roja y la ventana blanca.", "la")
+   # => 4
+   ```
+
+```ruby
+def words_from_string(string)
+   string.downcase.scan(/[\w']+/)
+end
+
+def contar(frase,palabra)
+   words_from_string(frase).reduce(0) {|count, w| if palabra==w then count + 1 else count + 0 end }
+end
+
+contar("La casa de la esquina tiene la puerta roja y la ventana blanca.", "la")
+```
+
+7.Dada una cadena cualquiera, y utilizando los métodos que provee la clase `String`, realizá las siguientes operaciones sobre el `string`:
+
+  1. Imprimilo con sus caracteres en orden inverso.
+  2. Eliminá los espacios en blanco que contenga.
+  3. Convertí cada uno de sus caracteres por su correspondiente valor ASCII.
+  4. Cambiá las vocales por números (`a` por `4`, `e` por `3`, `i` por `1`, `o` por `0`, `u` por `6`).
 

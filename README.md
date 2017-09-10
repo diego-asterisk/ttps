@@ -75,6 +75,33 @@ Tip: git log
 
 >    eliminamos MacRuby de las vms
 
+6. ¿Para qué se utilizan los siguientes subcomandos?
+  1. `init`
+  2. `status`
+  3. `log`
+  4. `fetch`
+  5. `merge`
+  6. `pull`
+  7. `commit`
+  8. `stash`
+  9. `push`
+  10. `rm`
+  11. `checkout`
+7. Creá un archivo de texto en el repositorio que clonaste en el ejercicio **5** y verificá el estado de tu espacio de
+   trabajo con el subcomando `status`. ¿En qué estado está el archivo que agregaste?
+8. Utilizá el subcomando `log` para ver los commits que se han hecho en el repositorio, tomá cualquiera de ellos y copiá
+   su _hash_ (por ejemplo, `800dcba6c8bb2881d90dd39c285a81eabee5effa`), y luego utilizá el subcomando `checkout` para
+   _viajar en el tiempo_ (apuntar tu copia local) a ese commit. ¿Qué commits muestra ahora `git log`? ¿Qué ocurrió con
+   los commits que no aparecen? ¿Qué dice el subcomando `status`?
+9. Volvé al último commit de la rama principal (`master`) usando nuevamente el subcomando `checkout`.
+   Corroborá que efectivamente haya ocurrido esto.
+10. Creá un directorio vacío en el raiz del proyecto clonado. ¿En qué estado aparece en el `git status`? ¿Por qué?
+11. Creá un archivo vacío dentro del directorio que creaste en el ejercicio anterior y volvé a ejecutar el subcomando
+    `status`. ¿Qué ocurre ahora? ¿Por qué?
+12. Utilizá el subcomando `clean` para eliminar los archivos no versionados (_untracked_) y luego ejecutá `git status`.
+    ¿Qué información muestra ahora?
+13. Actualizá el contenido de tu copia local mediante el subcomando `pull`.
+
 
 
 # Ruby TP1
@@ -277,7 +304,95 @@ contar("La casa de la esquina tiene la puerta roja y la ventana blanca.", "la")
 7.Dada una cadena cualquiera, y utilizando los métodos que provee la clase `String`, realizá las siguientes operaciones sobre el `string`:
 
   1. Imprimilo con sus caracteres en orden inverso.
+> puts string.reverse
   2. Eliminá los espacios en blanco que contenga.
+> string.strip!
   3. Convertí cada uno de sus caracteres por su correspondiente valor ASCII.
+> string.each_char {|c| print c.ord, ' ' }
   4. Cambiá las vocales por números (`a` por `4`, `e` por `3`, `i` por `1`, `o` por `0`, `u` por `6`).
+> string.tr!('aeiou','43106')
+
+8.¿Qué hace el siguiente código?
+
+   ```ruby
+   [:upcase, :downcase, :capitalize, :swapcase].map do |meth|
+     "TTPS Ruby".send(meth)
+   end
+   ```
+> => ["TTPS RUBY", "ttps ruby", "Ttps ruby", "ttps rUBY"]
+
+Itera sobre un array de símbolos para aplicarlos a un string y devolver el array de los resultados.
+
+9. Escribí una función que dado un arreglo que contenga varios `string` cualesquiera, retorne un nuevo arreglo donde
+   cada elemento es la longitud del `string` que se encuentra en la misma posición del arreglo recibido como parámetro.
+   Por ejemplo:
+
+    ```ruby
+    longitud(['TTPS', 'Opción', 'Ruby', 'Cursada 2015'])
+    # => [4, 6, 4, 12]
+    ```
+```ruby
+def longitud(arr)
+   arr.map {|e| e.size }
+end
+```
+
+10. Escribí una función llamada `a_ul` que reciba un `Hash` y retorne un `String` con los pares de clave/valor del hash
+    formateados en una lista HTML `<ul>`. Por ejemplo:
+
+    ```ruby
+    a_ul({ perros: 1, gatos: 1, peces: 0})
+    # => "<ul><li>perros: 1</li><li>gatos: 1</li><li>peces: 0</li></ul>"
+    ```
+
+11. Escribí una función llamada `rot13` que _encripte_ un `string` recibido como parámetro utilizando el algoritmo
+    [`ROT13`](https://es.wikipedia.org/wiki/ROT13). Por ejemplo:
+
+    ```ruby
+    rot13("¡Bienvenidos a la cursada 2015 de TTPS Opción Ruby!")
+    # => "¡Ovrairavqbf n yn phefnqn 2015 qr GGCF Bcpvóa Ehol!"
+    ```
+
+12. Escribí una función más genérica, parecida a la del ejercicio anterior, que reciba como parámetro un `string` y un
+    número `n`, y que realice una _rotación_ de `n` lugares de las letras del `string` y retorne el resultado. Por
+    ejemplo:
+
+    ```ruby
+    rot("¡Bienvenidos a la cursada 2015 de TTPS Opción Ruby!", 13)
+    # => "¡Ovrairavqbf n yn phefnqn 2015 qr GGCF Bcpvóa Ehol!"
+    ```
+
+13. Escribí un _script_ en Ruby que le pida al usuario su nombre y lo utilice para saludarlo imprimiendo en pantalla
+    `¡Hola, <nombre>!`. Por ejemplo:
+
+    ```bash
+    $ ruby script.rb
+    Por favor, ingresá tu nombre:
+    Matz
+    ¡Hola, Matz!
+    ```
+
+14. Dado un color expresado en notación [RGB](https://es.wikipedia.org/wiki/RGB), debés calcular su representación
+    entera y hexadecimal, donde la notación _entera_ se define como `red + green*256 + blue*256*256` y la _hexadecimal_
+    como el resultado de expresar en hexadecimal el valor de cada color y concatenarlos en orden. Por ejemplo:
+
+    ```ruby
+    notacion_hexadecimal([0, 128, 255])
+    # => '#0080FF'
+    notacion_entera([0, 128, 255])
+    # => 16744448
+    ```
+
+15. Investigá qué métodos provee Ruby para:
+  1. Conocer la lista de métodos de una clase.
+  2. Conocer la lista de métodos de instancia de una clase.
+  3. Conocer las variables de instancia de una clase.
+  4. Obtener la lista de ancestros (_superclases_) de una clase.
+
+16. Escribí una función que encuentre la suma de todos los números naturales múltiplos de `3` ó `5` menores que un
+    número `tope` que reciba como parámetro.
+
+17. Cada nuevo término en la secuencia de Fibonacci es generado sumando los 2 términos anteriores. Los primeros 10
+    términos son: `1`, `1`, `2`, `3`, `5`, `8`, `13`, `21`, `34`, `55`. Considerando los términos en la secuencia de
+    Fibonacci cuyos valores no exceden los 4 millones, encontrá la suma de los términos pares.
 

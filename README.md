@@ -67,6 +67,16 @@ Tip: git log
 
 > git log
 
+> commit 4867a719bf588afa8a5dd85c3a660731b1d4065d
+
+> Author: Christian Rodriguez <car@cespi.unlp.edu.ar>
+
+> Date:   Mon Nov 23 18:33:42 2015 -0300
+
+>    errores sintacticos en rails
+
+> git log
+
 > commit e38781bea87234f52d5282c11acf76d3be066ea2
 
 > Author: Christian Rodriguez <chrodriguez@gmail.com>
@@ -76,32 +86,63 @@ Tip: git log
 >    eliminamos MacRuby de las vms
 
 6. ¿Para qué se utilizan los siguientes subcomandos?
-  1. `init`
-  2. `status`
-  3. `log`
-  4. `fetch`
-  5. `merge`
-  6. `pull`
-  7. `commit`
-  8. `stash`
-  9. `push`
-  10. `rm`
-  11. `checkout`
-7. Creá un archivo de texto en el repositorio que clonaste en el ejercicio **5** y verificá el estado de tu espacio de
-   trabajo con el subcomando `status`. ¿En qué estado está el archivo que agregaste?
-8. Utilizá el subcomando `log` para ver los commits que se han hecho en el repositorio, tomá cualquiera de ellos y copiá
-   su _hash_ (por ejemplo, `800dcba6c8bb2881d90dd39c285a81eabee5effa`), y luego utilizá el subcomando `checkout` para
-   _viajar en el tiempo_ (apuntar tu copia local) a ese commit. ¿Qué commits muestra ahora `git log`? ¿Qué ocurrió con
-   los commits que no aparecen? ¿Qué dice el subcomando `status`?
+    1. `init`
+> crear un nuevo repositorio
+    2. `status`
+> muestra el estado del directorio de trabajo del area de staging
+    3. `log`
+> muestra la historia de los commits y permite filtrar
+    4. `fetch`
+> trae los cambios del repositorio a una rama local oculta
+    5. `merge`
+> fusiona los cambios del repositorio con la rama local
+    6. `pull`
+> es un atajo para fetch + merge
+    7. `commit`
+> los cambios en local que están preparados se incluyen en HEAD con commit, pero aún no suben al repositorio
+    8. `stash`
+> sinónimo de git add, prepara los cambios
+    9. `push`
+> los cambios en HEAD se envían al repositorio remoto
+    10. `rm`
+> borra archivo del repositorio
+    11. `checkout`
+> cambia de rama
+
+7.Creá un archivo de texto en el repositorio que clonaste en el ejercicio **5** y verificá el estado de tu espacio de   trabajo con el subcomando `status`. ¿En qué estado está el archivo que agregaste?
+
+> archivo sin seguimiento
+
+8.Utilizá el subcomando `log` para ver los commits que se han hecho en el repositorio, tomá cualquiera de ellos y copiá  su _hash_ (por ejemplo, `800dcba6c8bb2881d90dd39c285a81eabee5effa`), y luego utilizá el subcomando `checkout` para
+   _viajar en el tiempo_ (apuntar tu copia local) a ese commit. ¿Qué commits muestra ahora `git log`? ¿Qué ocurrió con   los commits que no aparecen? ¿Qué dice el subcomando `status`?
+
+> muestra solo los commits anteriores al del hash usado.
+
+> los commits que no aparecen están en el repositorio remoto. cómo puedo ver los commits de nuevo? volviendo a la rama con git checkout rama
+
+> dice que hay un archivo sin seguimiento, el creado en el ejercicio anterior
+
 9. Volvé al último commit de la rama principal (`master`) usando nuevamente el subcomando `checkout`.
    Corroborá que efectivamente haya ocurrido esto.
+
+> git checkout master y luego git log
+
 10. Creá un directorio vacío en el raiz del proyecto clonado. ¿En qué estado aparece en el `git status`? ¿Por qué?
-11. Creá un archivo vacío dentro del directorio que creaste en el ejercicio anterior y volvé a ejecutar el subcomando
-    `status`. ¿Qué ocurre ahora? ¿Por qué?
+
+> no aparece, porque es un directorio vacío y git lo ignora
+
+11. Creá un archivo vacío dentro del directorio que creaste en el ejercicio anterior y volvé a ejecutar el subcomando    `status`. ¿Qué ocurre ahora? ¿Por qué?
+
+> ahora figura la carpeta como sin seguimiento. Porque git sigue los cambios de archivos, y el nuevo archivo está en la carpeta nueva
+
 12. Utilizá el subcomando `clean` para eliminar los archivos no versionados (_untracked_) y luego ejecutá `git status`.
     ¿Qué información muestra ahora?
+
+> working tree clean
+
 13. Actualizá el contenido de tu copia local mediante el subcomando `pull`.
 
+> Already up-to-date.
 
 
 # Ruby TP1

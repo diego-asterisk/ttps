@@ -386,6 +386,16 @@ end
     # => "<ul><li>perros: 1</li><li>gatos: 1</li><li>peces: 0</li></ul>"
     ```
 
+```ruby
+def a_ul(hash)
+   if hash.size > 0
+	  '<ul>' + hash.reduce('') { |acum, (key, value)| acum << "<li>#{key}: #{value}</li>" } + '</ul>'
+   else
+      ''
+   end
+end
+```
+
 11. Escribí una función llamada `rot13` que _encripte_ un `string` recibido como parámetro utilizando el algoritmo
     [`ROT13`](https://es.wikipedia.org/wiki/ROT13). Por ejemplo:
 
@@ -393,6 +403,12 @@ end
     rot13("¡Bienvenidos a la cursada 2015 de TTPS Opción Ruby!")
     # => "¡Ovrairavqbf n yn phefnqn 2015 qr GGCF Bcpvóa Ehol!"
     ```
+
+```ruby
+def rot_13(string)
+   string.tr("A-Za-z", "N-ZA-Mn-za-m")
+end
+```
 
 12. Escribí una función más genérica, parecida a la del ejercicio anterior, que reciba como parámetro un `string` y un
     número `n`, y que realice una _rotación_ de `n` lugares de las letras del `string` y retorne el resultado. Por

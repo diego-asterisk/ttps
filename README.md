@@ -418,6 +418,21 @@ end
     rot("¡Bienvenidos a la cursada 2015 de TTPS Opción Ruby!", 13)
     # => "¡Ovrairavqbf n yn phefnqn 2015 qr GGCF Bcpvóa Ehol!"
     ```
+```ruby
+def rot_may(string,n)
+   string.gsub(/[A-Z]/) do |s| 
+	  ((s.ord + n - 'A'.ord) % 26 + 'A'.ord).chr
+   end
+end
+def rot_min(string,n)
+   string.gsub(/[a-z]/) do |s| 
+	  ((s.ord + n - 'a'.ord) % 26 + 'a'.ord).chr
+   end
+end
+def rot_n(string, n)
+   rot_may(rot_min(string,n),n)
+end
+```
 
 13. Escribí un _script_ en Ruby que le pida al usuario su nombre y lo utilice para saludarlo imprimiendo en pantalla
     `¡Hola, <nombre>!`. Por ejemplo:
@@ -428,10 +443,14 @@ end
     Matz
     ¡Hola, Matz!
     ```
+```ruby
+#!env ruby
+puts 'Por favor, ingresá tu nombre:'
+nombre = gets.chomp
+puts "¡Hola, #{nombre}!"
+```
 
-14. Dado un color expresado en notación [RGB](https://es.wikipedia.org/wiki/RGB), debés calcular su representación
-    entera y hexadecimal, donde la notación _entera_ se define como `red + green*256 + blue*256*256` y la _hexadecimal_
-    como el resultado de expresar en hexadecimal el valor de cada color y concatenarlos en orden. Por ejemplo:
+14. Dado un color expresado en notación [RGB](https://es.wikipedia.org/wiki/RGB), debés calcular su representación entera y hexadecimal, donde la notación _entera_ se define como `red + green*256 + blue*256*256` y la _hexadecimal_ como el resultado de expresar en hexadecimal el valor de cada color y concatenarlos en orden. Por ejemplo:
 
     ```ruby
     notacion_hexadecimal([0, 128, 255])

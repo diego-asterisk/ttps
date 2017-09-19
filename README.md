@@ -458,6 +458,15 @@ puts "¡Hola, #{nombre}!"
     notacion_entera([0, 128, 255])
     # => 16744448
 ```
+```ruby
+def notacion_entera(arr)
+   return arr[0] + arr[1]*256 +arr[2]*256*256
+end
+def notacion_hexadecimal(arr)
+	return "##{'%02X' % arr[0]}#{'%02X' % arr[1]}#{'%02X' % arr[2]}"
+end
+
+```
 
 15.Investigá qué métodos provee Ruby para:
 
@@ -469,9 +478,13 @@ puts "¡Hola, #{nombre}!"
 > instance_variables  
   4. Obtener la lista de ancestros (_superclases_) de una clase.
 > ancestors
+
 > Object.superclass => BasicObject
+
 > Object.superclass.superclass => nil
+
 > Object.ancestors => [Object, Kernel, BasicObject]
+
 > Object.included_modules => [Kernel]
 
 16.Escribí una función que encuentre la suma de todos los números naturales múltiplos de `3` ó `5` menores que un

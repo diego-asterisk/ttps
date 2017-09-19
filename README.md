@@ -452,23 +452,32 @@ puts "¡Hola, #{nombre}!"
 
 14. Dado un color expresado en notación [RGB](https://es.wikipedia.org/wiki/RGB), debés calcular su representación entera y hexadecimal, donde la notación _entera_ se define como `red + green*256 + blue*256*256` y la _hexadecimal_ como el resultado de expresar en hexadecimal el valor de cada color y concatenarlos en orden. Por ejemplo:
 
-    ```ruby
+```ruby
     notacion_hexadecimal([0, 128, 255])
     # => '#0080FF'
     notacion_entera([0, 128, 255])
     # => 16744448
-    ```
+```
 
-15. Investigá qué métodos provee Ruby para:
+15.Investigá qué métodos provee Ruby para:
+
   1. Conocer la lista de métodos de una clase.
+> methods, ejemplo: a = Object.new a.methods
   2. Conocer la lista de métodos de instancia de una clase.
+> instance_methods
   3. Conocer las variables de instancia de una clase.
+> instance_variables  
   4. Obtener la lista de ancestros (_superclases_) de una clase.
+> ancestors
+> Object.superclass => BasicObject
+> Object.superclass.superclass => nil
+> Object.ancestors => [Object, Kernel, BasicObject]
+> Object.included_modules => [Kernel]
 
-16. Escribí una función que encuentre la suma de todos los números naturales múltiplos de `3` ó `5` menores que un
+16.Escribí una función que encuentre la suma de todos los números naturales múltiplos de `3` ó `5` menores que un
     número `tope` que reciba como parámetro.
 
-17. Cada nuevo término en la secuencia de Fibonacci es generado sumando los 2 términos anteriores. Los primeros 10
+17.Cada nuevo término en la secuencia de Fibonacci es generado sumando los 2 términos anteriores. Los primeros 10
     términos son: `1`, `1`, `2`, `3`, `5`, `8`, `13`, `21`, `34`, `55`. Considerando los términos en la secuencia de
     Fibonacci cuyos valores no exceden los 4 millones, encontrá la suma de los términos pares.
 

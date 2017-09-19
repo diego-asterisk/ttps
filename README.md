@@ -459,11 +459,20 @@ puts "¡Hola, #{nombre}!"
     # => 16744448
     ```
 
+```ruby
+def notacion_hexadecimal(arr)
+	return "##{'%02X' % arr[0]}#{'%02X' % arr[1]}#{'%02X' % arr[2]}"
+end
+def notacion_entera(arr)
+   return arr[0] + arr[1]*256 +arr[2]*256*256
+end
+```
+
 15. Investigá qué métodos provee Ruby para:
-  1. Conocer la lista de métodos de una clase.
-  2. Conocer la lista de métodos de instancia de una clase.
-  3. Conocer las variables de instancia de una clase.
-  4. Obtener la lista de ancestros (_superclases_) de una clase.
+  1.Conocer la lista de métodos de una clase.
+  2.Conocer la lista de métodos de instancia de una clase.
+  3.Conocer las variables de instancia de una clase.
+  4.Obtener la lista de ancestros (_superclases_) de una clase.
 
 16. Escribí una función que encuentre la suma de todos los números naturales múltiplos de `3` ó `5` menores que un
     número `tope` que reciba como parámetro.

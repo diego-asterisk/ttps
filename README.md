@@ -489,8 +489,37 @@ end
 
 16.Escribí una función que encuentre la suma de todos los números naturales múltiplos de `3` ó `5` menores que un
     número `tope` que reciba como parámetro.
+```ruby
+def suma_tope(tope)
+   acum = 0
+   (3...tope).each do |num|
+	  acum += num if (num % 3) == 0 || (num % 5) == 0
+   end
+   acum
+end
+```
+17.Cada nuevo término en la secuencia de Fibonacci es generado sumando los 2 términos anteriores. Los primeros 10 términos son: `1`, `1`, `2`, `3`, `5`, `8`, `13`, `21`, `34`, `55`. Considerando los términos en la secuencia de    Fibonacci cuyos valores no exceden los 4 millones, encontrá la suma de los términos pares.
+```ruby
+def fibonacci(n)
+   if (0..1).include?(n)
+      n
+   else
+      fibonacci(n-1) + fibonacci(n-2)
+   end
+end
 
-17.Cada nuevo término en la secuencia de Fibonacci es generado sumando los 2 términos anteriores. Los primeros 10
-    términos son: `1`, `1`, `2`, `3`, `5`, `8`, `13`, `21`, `34`, `55`. Considerando los términos en la secuencia de
-    Fibonacci cuyos valores no exceden los 4 millones, encontrá la suma de los términos pares.
+def suma_pares_fibonacci(tope)
+   acum = 0
+   n = 1
+   loop do 
+      n += 1
+      f = fibonacci(n)
+	  break if f > tope
+      puts "n #{n} f #{f}" if (f % 2) == 0
+      acum += f if (f % 2) == 0
+   end
+   acum
+end
 
+puts suma_pares_fibonacci(4000000)
+```

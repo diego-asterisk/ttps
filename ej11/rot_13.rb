@@ -121,4 +121,3 @@ def rot_13_gsub(string)
    }
    string.gsub(/[A-z]/, hash)
 end
-

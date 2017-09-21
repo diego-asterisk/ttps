@@ -452,32 +452,74 @@ puts "¡Hola, #{nombre}!"
 
 14. Dado un color expresado en notación [RGB](https://es.wikipedia.org/wiki/RGB), debés calcular su representación entera y hexadecimal, donde la notación _entera_ se define como `red + green*256 + blue*256*256` y la _hexadecimal_ como el resultado de expresar en hexadecimal el valor de cada color y concatenarlos en orden. Por ejemplo:
 
-    ```ruby
+```ruby
     notacion_hexadecimal([0, 128, 255])
     # => '#0080FF'
     notacion_entera([0, 128, 255])
     # => 16744448
-    ```
-
+```
 ```ruby
-def notacion_hexadecimal(arr)
-	return "##{'%02X' % arr[0]}#{'%02X' % arr[1]}#{'%02X' % arr[2]}"
-end
 def notacion_entera(arr)
    return arr[0] + arr[1]*256 +arr[2]*256*256
 end
+def notacion_hexadecimal(arr)
+	return "##{'%02X' % arr[0]}#{'%02X' % arr[1]}#{'%02X' % arr[2]}"
+end
+
 ```
 
-15. Investigá qué métodos provee Ruby para:
-  1.Conocer la lista de métodos de una clase.
-  2.Conocer la lista de métodos de instancia de una clase.
-  3.Conocer las variables de instancia de una clase.
-  4.Obtener la lista de ancestros (_superclases_) de una clase.
+15.Investigá qué métodos provee Ruby para:
 
-16. Escribí una función que encuentre la suma de todos los números naturales múltiplos de `3` ó `5` menores que un
+  1. Conocer la lista de métodos de una clase.
+> methods, ejemplo: a = Object.new a.methods
+  2. Conocer la lista de métodos de instancia de una clase.
+> instance_methods
+  3. Conocer las variables de instancia de una clase.
+> instance_variables  
+  4. Obtener la lista de ancestros (_superclases_) de una clase.
+> ancestors
+
+> Object.superclass => BasicObject
+
+> Object.superclass.superclass => nil
+
+> Object.ancestors => [Object, Kernel, BasicObject]
+
+> Object.included_modules => [Kernel]
+
+16.Escribí una función que encuentre la suma de todos los números naturales múltiplos de `3` ó `5` menores que un
     número `tope` que reciba como parámetro.
+```ruby
+def suma_tope(tope)
+   acum = 0
+   (3...tope).each do |num|
+	  acum += num if (num % 3) == 0 || (num % 5) == 0
+   end
+   acum
+end
+```
+17.Cada nuevo término en la secuencia de Fibonacci es generado sumando los 2 términos anteriores. Los primeros 10 términos son: `1`, `1`, `2`, `3`, `5`, `8`, `13`, `21`, `34`, `55`. Considerando los términos en la secuencia de    Fibonacci cuyos valores no exceden los 4 millones, encontrá la suma de los términos pares.
+```ruby
+def fibonacci(n)
+   if (0..1).include?(n)
+      n
+   else
+      fibonacci(n-1) + fibonacci(n-2)
+   end
+end
 
-17. Cada nuevo término en la secuencia de Fibonacci es generado sumando los 2 términos anteriores. Los primeros 10
-    términos son: `1`, `1`, `2`, `3`, `5`, `8`, `13`, `21`, `34`, `55`. Considerando los términos en la secuencia de
-    Fibonacci cuyos valores no exceden los 4 millones, encontrá la suma de los términos pares.
+def suma_pares_fibonacci(tope)
+   acum = 0
+   n = 1
+   loop do 
+      n += 1
+      f = fibonacci(n)
+	  break if f > tope
+      puts "n #{n} f #{f}" if (f % 2) == 0
+      acum += f if (f % 2) == 0
+   end
+   acum
+end
 
+puts suma_pares_fibonacci(4000000)
+```

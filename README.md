@@ -514,7 +514,7 @@ def suma_pares_fibonacci(tope)
    loop do 
       n += 1
       f = fibonacci(n)
-	  break if f > tope
+      break if f > tope
       puts "n #{n} f #{f}" if (f % 2) == 0
       acum += f if (f % 2) == 0
    end

@@ -1,6 +1,11 @@
-def ordenar_arreglo(arr)
-   arr.sort
+fib = Enumerator.new do |y|
+   a = b = 1
+   loop do
+     y.yield a
+     a, b = b, a + b
+   end
 end
 
-p ordenar_arreglo([1, 4, 6, 2, 3, 0, 10])
-# => [0, 1, 2, 3, 4, 6, 10]
+fib
+fib.next
+fib.take(19)

@@ -22,8 +22,6 @@ class Moto < VehiculoDeMotor
    end
 end
 class Lancha < VehiculoDeMotor
-   def arrancar
-   end
 end
 
 class	Taller

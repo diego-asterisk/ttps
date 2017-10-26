@@ -119,10 +119,16 @@ los elementos fundamentales del mismo: los métodos, las clases y los módulos, 
      del lenguaje estás usando para poder realizar esto?
 
 9. ¿Qué diferencia hay entre el uso de `include` y `extend` a la hora de incorporar un módulo en una clase?
-  1. Si quisieras usar un módulo para agregar métodos de instancia a una clase, ¿qué forma usarías a la hora de
-     incluirlo en la clase?
-  2. Si en cambio quisieras usar un módulo para agregar métodos de clase, ¿qué forma usarías a la hora de incluir el
-     módulo en la clase?
+    <<< 'include' agrega los metodos de instancia del módulo como si fueran metodos de instancia de la clase, y los metodos de clase del módulo como metodos de clase de la clase. En cambio 'extend' agrega los metodos de instancia como metodos de clase en una clase, o como metodos de instancia en un objeto receptor; depende de si el receptor es una clase o un objeto.
+    
+  1. Si quisieras usar un módulo para agregar métodos de instancia a una clase, ¿qué forma usarías a la hora de incluirlo en la clase?
+  > Class Clase
+  >   include Modulo
+  2. Si en cambio quisieras usar un módulo para agregar métodos de clase, ¿qué forma usarías a la hora de incluir el módulo en la clase?
+  > Clase.extend Modulo
+  o 
+  > Class Clase
+  >   extend Modulo
 
 10. Implementá el módulo `Reverso` para utilizar como _Mixin_ e incluilo en alguna clase para probarlo. `Reverso` debe
     contener los siguientes métodos:

@@ -1,15 +1,5 @@
-def longitud(*arr)
-   arr.each do |e|
-      puts e.to_s + 
-      ' --> ' + 
-      e.to_s.size.to_s
-   end
-end
-
-longitud(9, Time.now, 'Hola', {un: 'hash'}, :ruby)
-# Debe imprimir:
-# "9" --> 1
-# "2017-09-14 13:22:10 +0000" --> 25
-# "Hola" --> 4
-# {:un=>"hash"} --> 13
-# ruby --> 4
+require_relative 'tiempo'
+puts cuanto_falta? Time.new(2017, 12, 31, 23, 59, 59)
+# Debe retornar la cantidad de minutos que faltan para las 23:59:59 del 31/12/2017
+puts cuanto_falta?
+# Debe retornar la cantidad de minutos que faltan para la medianoche de hoy

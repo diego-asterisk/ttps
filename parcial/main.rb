@@ -2,32 +2,46 @@ require_relative 'my_random'
 require_relative 'moderator'
 
 class Bingo
-  include Moderator
-  attr_accessor :line_queries, :bingo_queries
+   include Moderator
+   
+   def initialize(r)
+      @r = r
+   end
+   
+   def play
+      r = @r
+      loop do
+        break if r.available.empty?
+        number = r.next
+        puts number
+        if (self.line?(number)) then
+          puts 'Linea!'
+          break
+        end
+        if (self.bingo?(number)) then
+         puts 'Bingo!'
+          break           
+        end
+      end
+
+      loop do
+        break if r.available.empty?
+        number = r.next
+        puts number
+        if (self.bingo?(number)) then
+         puts 'Bingo!'
+          break           
+        end
+      end
+      
+   end
+
 end
 
+# meter esto en la clase y usar initialize y play
 r = MyRandom.new(99) 
-b = Bingo.new
-finalizado = false
+b = Bingo.new(r)
+b.play
 
-loop do
-  break if r.available.empty?
-  number = r.next
-  puts number
-  if (b.line?(number)) then
-    puts 'Linea!'
-    break
-  end
-end
-
-loop do
-  break if r.available.empty?
-  number = r.next
-  puts number
-  if (b.bingo?(number)) then
-	puts 'Bingo!'
-	 break           
-  end
-end
 
 
